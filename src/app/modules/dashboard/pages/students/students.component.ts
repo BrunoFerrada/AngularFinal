@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Student } from './models';
 
 @Component({
   selector: 'app-students',
@@ -11,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class StudentsComponent {
 
   studentForm: FormGroup;
+
+  students: Student[] = []
 
   constructor(private fb: FormBuilder) {
     this.studentForm = this.fb.group({
@@ -24,7 +27,10 @@ export class StudentsComponent {
     if(this.studentForm.invalid) {
       this.studentForm.markAllAsTouched();
     } else {
-      console.log(this.studentForm.value)
+      //console.log(this.studentForm.value)
+      this.students.push({
+        ...this.studentForm.value
+      })
     }
   }
 }
