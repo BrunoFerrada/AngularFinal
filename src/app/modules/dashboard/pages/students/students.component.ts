@@ -15,6 +15,7 @@ export class StudentsComponent {
   studentForm: FormGroup;
   displayedColumns: string[] = ['id', 'name', 'actions'];
   students: Student[] = [];
+  editStudentId: string | null = null;
 
   constructor(private fb: FormBuilder) {
     this.studentForm = this.fb.group({
@@ -25,23 +26,43 @@ export class StudentsComponent {
 
 
   onSubmit() {
-    if(this.studentForm.invalid) {
+    if (this.studentForm.invalid) {
       this.studentForm.markAllAsTouched();
     } else {
-      //console.log(this.studentForm.value)
-      this.students = [
-        ...this.students,
-        {
-          id: generateRandomString(5),
-          ...this.studentForm.value,
-        }
-      ]
-
+      if (this.editStudentId) {
+        // Editar estudiante existente
+        this.students = this.students.map(student =>
+          student.id === this.editStudentId
+            ? { id: student.id, ...this.studentForm.value }
+            : student
+        );
+        this.editStudentId = null; // Salir del modo de edición
+      } else {
+        // Agregar nuevo estudiante
+        this.students = [
+          ...this.students,
+          {
+            id: generateRandomString(5),
+            ...this.studentForm.value,
+          },
+        ];
+      }
       this.studentForm.reset();
     }
   }
 
   onDelete(id: string) {
     this.students = this.students.filter((el) => el.id != id)
+  }
+
+  onEdit(id: string) {
+    const studentToEdit = this.students.find(student => student.id === id);
+    if (studentToEdit) {
+      this.editStudentId = id;
+      this.studentForm.patchValue({
+        name: studentToEdit.name,
+        lastName: studentToEdit.lastName,
+      });
+    }
   }
 }
