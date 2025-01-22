@@ -1,6 +1,6 @@
 <main>
     <div name="container">
-        <div class="text-center"><h1>Estudiantes</h1></div>
+        <div class="text-center"><h1 appTitles>Estudiantes</h1></div>
     </div>
     <form (ngSubmit)="onSubmit()" [formGroup]="studentForm" class="w-6">
         <div class="grid">
@@ -20,11 +20,6 @@
         
         <button mat-flat-button color="primary">Guardar</button>
     </form>
-    
-    <br/>
-    <button mat-icon-button>
-        <mat-icon>delete</mat-icon>
-    </button>
 
     <table mat-table [dataSource]="students" class="mat-elevation-z8">
 

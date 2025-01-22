@@ -32,7 +32,7 @@ export class StudentsComponent {
       this.students = [
         ...this.students,
         {
-          id: generateRandomString(6),
+          id: generateRandomString(5),
           ...this.studentForm.value,
         }
       ]

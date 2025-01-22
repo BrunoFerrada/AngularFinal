@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsModule } from './pages/students/students.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { StudentsModule } from './pages/students/students.module';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     DashboardComponent

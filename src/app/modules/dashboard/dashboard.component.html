@@ -1,13 +1,11 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
-      <p>Auto-resizing sidenav</p>
-      @if (showFiller) {
-        <p>Lorem, ipsum dolor sit amet consectetur.</p>
-      }
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>
-      <a routerLink="students">Ir a mi página</a>
+      <p class="text-center" appTitles>CoderCursos</p>
+      <div class="d-flex justify-content-center justify-items-center">
+        <button routerLink="students" mat-flat-button>
+          Estudiantes
+        </button>
+      </div>
     </mat-drawer>
   
     <div class="example-sidenav-content">
