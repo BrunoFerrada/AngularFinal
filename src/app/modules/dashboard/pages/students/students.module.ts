@@ -25,7 +25,7 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     ReactiveFormsModule,
     SharedModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [
     StudentsComponent
