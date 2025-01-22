@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Student } from './models';
+import { generateRandomString } from '../../../../shared/utils/idRandom';
 
 @Component({
   selector: 'app-students',
@@ -12,8 +13,8 @@ import { Student } from './models';
 export class StudentsComponent {
 
   studentForm: FormGroup;
-
-  students: Student[] = []
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'actions'];
+  students: Student[] = [];
 
   constructor(private fb: FormBuilder) {
     this.studentForm = this.fb.group({
@@ -28,9 +29,19 @@ export class StudentsComponent {
       this.studentForm.markAllAsTouched();
     } else {
       //console.log(this.studentForm.value)
-      this.students.push({
-        ...this.studentForm.value
-      })
+      this.students = [
+        ...this.students,
+        {
+          id: generateRandomString(6),
+          ...this.studentForm.value,
+        }
+      ]
+
+      this.studentForm.reset();
     }
+  }
+
+  onDelete(id: string) {
+    this.students = this.students.filter((el) => el.id != id)
   }
 }

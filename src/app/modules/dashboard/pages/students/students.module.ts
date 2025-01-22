@@ -9,7 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../../../../shared/shared.module';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { SharedModule } from '../../../../shared/shared.module';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MatTableModule
   ],
   exports: [
     StudentsComponent
