@@ -2,7 +2,7 @@
     <div name="container">
         <div class="text-center"><h1 appTitles>Estudiantes</h1></div>
     </div>
-    <div>
+    <div  style="display: flex; justify-content: center; align-items: center; padding: 15px;">  
         <form (ngSubmit)="onSubmit()" [formGroup]="studentForm" class="w-6">
             <div class="grid">
                 <div class="col-6">
@@ -18,16 +18,13 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6" style="display: flex; justify-content: center; justify-self: center; margin-top: 10px;">
                 <button mat-flat-button color="primary" >{{ editStudentId ? 'Actualizar' : 'Agregar' }}</button>
             </div>
         </form>
     </div>
 
     <table mat-table [dataSource]="students" class="mat-elevation-z8">
-
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
       
         <!-- IDn Column -->
         <ng-container matColumnDef="id">
