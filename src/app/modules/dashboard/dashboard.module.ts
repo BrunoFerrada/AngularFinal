@@ -13,12 +13,14 @@ import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsModule } from './pages/students/students.module';
 import { SharedModule } from '../../shared/shared.module';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     ToolBarComponent,
+    NavMenuComponent,
   ],
   imports: [
     CommonModule,

@@ -10,11 +10,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../../../../shared/shared.module';
 import {MatTableModule} from '@angular/material/table';
+import { StudentDetailComponent } from './pages/student-detail/student-detail.component';
 
 
 @NgModule({
   declarations: [
-    StudentsComponent
+    StudentsComponent,
+    StudentDetailComponent
   ],
   imports: [
     CommonModule,

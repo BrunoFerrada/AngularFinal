@@ -1,0 +1,11 @@
+<div class="text-center">
+    <h1>Cursos</h1>
+</div>
+@if (isLoading) {
+    <div style="display: flex; justify-content: center; align-items: center; height: 60vh;" *ngIf="isLoading">
+        <mat-spinner/>
+    </div>
+} @else {
+    <button (click)="openDialogForm()" mat-flat-button>Nuevo Curso</button>
+    <app-courses-table [dataSource]="dataSource" (delete)="onDelete($event)" (edit)="openDialogForm($event)"/>
+}
