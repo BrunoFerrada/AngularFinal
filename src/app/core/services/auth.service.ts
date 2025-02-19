@@ -32,6 +32,10 @@ export class AuthService
 
     constructor(private router: Router){}
 
+    get IsAdmin$(): Observable<boolean> {
+        return  this.authUser$.pipe(map((x) => x?.role === 'ADMIN'))
+    }
+
     login(payload: LoginPayload): void 
     {
         const loginResult = FAKE_USER_DB.find((user) => user.email === payload.email && user.password === payload.password);

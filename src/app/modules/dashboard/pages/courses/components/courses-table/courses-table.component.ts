@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from '../../models';
+import { AuthService } from '../../../../../../core/services/auth.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-courses-table',
@@ -18,4 +20,10 @@ export class CoursesTableComponent {
 
     @Output()
     edit = new EventEmitter<Course>()
+
+    isAdmin$: Observable<boolean>;
+    
+    constructor(private authService: AuthService) {
+      this.isAdmin$ = this.authService.IsAdmin$;
+    }
 }

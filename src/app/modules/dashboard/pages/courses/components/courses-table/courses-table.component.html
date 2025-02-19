@@ -22,10 +22,10 @@
         <button mat-icon-button>
             <mat-icon>visibility</mat-icon>
         </button>
-        <button (click)="edit.emit(element)" mat-icon-button>
+        <button *ngIf="isAdmin$ | async" (click)="edit.emit(element)" mat-icon-button>
             <mat-icon>edit</mat-icon>
         </button>
-        <button (click)="delete.emit(element.id)" mat-icon-button>
+        <button *ngIf="isAdmin$ | async" (click)="delete.emit(element.id)" mat-icon-button>
             <mat-icon>delete</mat-icon>
         </button>      
     </td>
