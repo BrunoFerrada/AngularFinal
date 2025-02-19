@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { delay, Observable, of } from "rxjs";
-import { Course } from "../modules/dashboard/pages/courses/models";
-import { generateRandomString } from "../shared/utils/idRandom";
+import { Course } from "../../modules/dashboard/pages/courses/models";
+import { generateRandomString } from "../../shared/utils/idRandom";
 
 let MY_FAKE_DATABASE: Course[] = [
     {

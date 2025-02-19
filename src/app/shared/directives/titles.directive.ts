@@ -7,7 +7,6 @@ import { Directive, ElementRef } from '@angular/core';
 export class TitlesDirective {
 
   constructor(private elementRef: ElementRef) { 
-    console.log(this.elementRef)
     this.elementRef.nativeElement.style.fontSize = '20px';
   }
 

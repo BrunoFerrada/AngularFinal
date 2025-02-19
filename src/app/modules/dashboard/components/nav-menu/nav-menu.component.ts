@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -13,15 +13,14 @@ export class NavMenuComponent {
     { label: 'Inicio', routerLink: 'home' },
     { label: 'Estudiantes', routerLink: 'students' },
     { label: 'Cursos', routerLink: 'courses' },
+    { label: 'Usuarios', routerLink: 'users' },
   ]
 
-  constructor(private router: Router) {
+  constructor(private authService: AuthService) {
 
   }
 
-  logOut(): void {
-    localStorage.removeItem('token');
-
-    this.router.navigate(['auth', 'login'])
+  logout(): void {
+    this.authService.logOut();
   }
 }
