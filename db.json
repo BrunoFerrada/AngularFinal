@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": "vnD3s",
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "name": "Administrador",
+      "accessToken": "djMDFJNdfmvcJKDFdsmd23GFuedsvFGD2d32",
+      "role": "ADMIN"
+    },
+    {
+      "id": "avs3D",
+      "email": "employee@email.com",
+      "password": "employee",
+      "name": "Empleado",
+      "accessToken": "djMDFJNd3gngh61DFd56hhgfddd23GFue232",
+      "role": "EMPLOYEE"
+    }
+  ],
+  "courses": [
+    {
+        "id": "svDFs3",
+        "name": "Javascript"
+    },
+    {
+        "name": "Python",
+        "id": "svDFj3"
+    },
+    {
+        "id": "10Ajs",
+        "name": "RxJs"
+    },
+    {
+        "id": "d71d",
+        "name": "Angular"
+    }
+  ],
+  "teachers": [
+    {
+        "id": "sdjv4",
+        "name": "Satoru Gojo",
+        "courseId": "10Ajs"
+    },
+    {
+        "id": "fdkjg",
+        "name": "Kento Nanami",
+        "courseId": "svDFs3"
+      }
+  ]
+}
