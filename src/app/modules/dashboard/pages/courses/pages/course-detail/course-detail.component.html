@@ -7,11 +7,7 @@
       <h2>{{ course?.name }}</h2>
       
       <h4>Profesores:</h4>
-      
-      <mat-list>
-        @for (teacher of course?.teachers; track $index) {
-          <mat-list-item>{{ teacher |  fullName }}</mat-list-item>
-        }
-      </mat-list>
+
+      <app-courses-detail-table [dataSource]="dataSource"/>
     } 
 }

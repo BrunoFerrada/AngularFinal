@@ -7,6 +7,7 @@ import { CoursesTableComponent } from './components/courses-table/courses-table.
 import { SharedModule } from '../../../../shared/shared.module';
 import { CourseFormDialogComponent } from './components/course-form-dialog/course-form-dialog.component';
 import { CourseDetailComponent } from './pages/course-detail/course-detail.component';
+import { CoursesDetailTableComponent } from './pages/courses-detail-table/courses-detail-table.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CourseDetailComponent } from './pages/course-detail/course-detail.compo
     CoursesComponent,
     CoursesTableComponent,
     CourseFormDialogComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CoursesDetailTableComponent
   ],
   imports: [
     CommonModule,
