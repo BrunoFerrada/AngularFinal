@@ -19,7 +19,7 @@ import { CourseDetailComponent } from './pages/course-detail/course-detail.compo
   imports: [
     CommonModule,
     CoursesRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class CoursesModule { }
