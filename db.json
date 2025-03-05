@@ -19,32 +19,44 @@
   ],
   "courses": [
     {
-        "id": "svDFs3",
-        "name": "Javascript"
+      "id": "svDFs3",
+      "name": "Javascript"
     },
     {
-        "name": "Python",
-        "id": "svDFj3"
+      "name": "Python",
+      "id": "svDFj3"
     },
     {
-        "id": "10Ajs",
-        "name": "RxJs"
+      "id": "10Ajs",
+      "name": "RxJs"
     },
     {
-        "id": "d71d",
-        "name": "Angular"
+      "id": "d71d",
+      "name": "Angular"
     }
   ],
   "teachers": [
     {
-        "id": "sdjv4",
-        "name": "Satoru Gojo",
-        "courseId": "10Ajs"
+      "id": "sdjv4",
+      "name": "Satoru Gojo",
+      "courseId": "10Ajs"
     },
     {
-        "id": "fdkjg",
-        "name": "Kento Nanami",
-        "courseId": "svDFs3"
-      }
+      "id": "fdkjg",
+      "name": "Kento Nanami",
+      "courseId": "svDFs3"
+    }
+  ],
+  "students": [
+    {
+      "id": "afhdh",
+      "name": "Naruto",
+      "lastName": "Uzumaki"
+    },
+    {
+      "id": "vmrxo",
+      "name": "Yuuji",
+      "lastName": "Itadori"
+    }
   ]
 }

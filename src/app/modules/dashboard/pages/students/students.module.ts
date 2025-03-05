@@ -11,12 +11,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../../../../shared/shared.module';
 import {MatTableModule} from '@angular/material/table';
 import { StudentDetailComponent } from './pages/student-detail/student-detail.component';
+import { StudentsFormDialogComponent } from './components/students-form-dialog/students-form-dialog.component';
+import { StudentsTableComponent } from './components/students-table/students-table.component';
 
 
 @NgModule({
   declarations: [
     StudentsComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    StudentsFormDialogComponent,
+    StudentsTableComponent
   ],
   imports: [
     CommonModule,
