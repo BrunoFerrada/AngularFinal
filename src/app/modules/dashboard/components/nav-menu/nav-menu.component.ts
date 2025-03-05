@@ -13,6 +13,7 @@ export class NavMenuComponent {
     { label: 'Inicio', routerLink: 'home' },
     { label: 'Estudiantes', routerLink: 'students' },
     { label: 'Cursos', routerLink: 'courses' },
+    { label: 'Profesores', routerLink: 'teachers'},
     { label: 'Usuarios', routerLink: 'users' },
   ]
 

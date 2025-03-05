@@ -38,12 +38,14 @@
   "teachers": [
     {
       "id": "sdjv4",
-      "name": "Satoru Gojo",
+      "name": "Gojo",
+      "lastName": "Satoru",
       "courseId": "10Ajs"
     },
     {
       "id": "fdkjg",
-      "name": "Kento Nanami",
+      "name": "Nanami",
+      "lastName": "Kento",
       "courseId": "svDFs3"
     }
   ],
@@ -51,12 +53,14 @@
     {
       "id": "afhdh",
       "name": "Naruto",
-      "lastName": "Uzumaki"
+      "lastName": "Uzumaki",
+      "courseId": ""
     },
     {
       "id": "vmrxo",
       "name": "Yuuji",
-      "lastName": "Itadori"
+      "lastName": "Itadori",
+      "courseId": ""
     }
   ]
 }
