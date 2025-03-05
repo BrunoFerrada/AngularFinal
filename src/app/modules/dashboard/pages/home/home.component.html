@@ -7,31 +7,45 @@
 
     <div class="card-wrapper">
         <!-- Tarjeta de Cursos -->
-        <mat-card>
-          <mat-card-title>Aquí puede ver los cursos disponibles</mat-card-title>
+        <mat-card class="card">
+          <mat-card-title class="pl-3">Ver los cursos disponibles</mat-card-title>
           <mat-card-content>
-            Encuentre todos los cursos que tenemos para ofrecerle y comience a aprender hoy mismo.
+            Consulte la lista de cursos disponibles y sus detalles.
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button color="primary" routerLink="/cursos">
-              Ver Cursos
+            <button mat-raised-button routerLink='courses'>
+                Ver Cursos
             </button>
           </mat-card-actions>
         </mat-card>
     
         <!-- Tarjeta de Estudiantes -->
-        <mat-card>
-          <mat-card-title>Aquí puede ver los estudiantes</mat-card-title>
+        <mat-card class="card">
+          <mat-card-title class="pl-3">Ver estudiantes</mat-card-title>
           <mat-card-content>
             Consulte la lista de estudiantes inscritos y sus progresos.
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button color="accent" routerLink="/estudiantes">
-              Ver Estudiantes
+            <button mat-raised-button routerLink='students'>
+                Ver Estudiantes
             </button>
           </mat-card-actions>
         </mat-card>
       </div>
-    
+
+      <!-- Tarjeta de Usuarios -->
+    <div class="centered-card">
+        <mat-card class="card">
+        <mat-card-title class="pl-3">Ver Usuarios</mat-card-title>
+        <mat-card-content>
+            Consulte la lista de usuarios y administre su información.
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button routerLink='users'>
+                Ver Usuarios
+            </button>
+        </mat-card-actions>
+        </mat-card>
+    </div>
 </div>
 
