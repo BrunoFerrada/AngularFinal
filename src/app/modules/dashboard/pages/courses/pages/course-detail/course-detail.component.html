@@ -1,27 +1,10 @@
+<div class="text-center">
+    <h1>Detalles del curso</h1>
+</div>
 @if (isLoading) {
-    <mat-spinner></mat-spinner>
-} @else { 
-    @if (errorMessage) {
-        <p>{{ errorMessage }}</p>
-    } @else {
-        <h2 class="text-center">Curso de {{ course?.name }}</h2>
-        <div class="flex-container">
-            <h4 class="m-3">Profesores:</h4>
-            <button mat-button color="primary" class="back-button" routerLink='../'>Volver</button>
-        </div>
-
-        <div class="add-teacher">
-            <mat-form-field appearance="fill">
-                <mat-label>Seleccionar Profesor</mat-label>
-                <mat-select [(ngModel)]="selectedTeacherId">
-                    <mat-option *ngFor="let teacher of teachersList" [value]="teacher.id">
-                        {{ teacher.name }} {{ teacher.lastName }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <button mat-raised-button color="primary" (click)="addTeacher(selectedTeacherId)" [disabled]="!selectedTeacherId">Agregar Profesor</button>
-        </div>
-
-        <app-courses-detail-table [dataSource]="dataSource" (delete)="removeTeacher($event)" /><!---->
-    } 
+    <div style="display: flex; justify-content: center; align-items: center; height: 60vh;" *ngIf="isLoading">
+        <mat-spinner/>
+    </div>
+} @else {
+    <app-courses-detail-table [dataSource]="dataSource" (delete)="onDelete($event)" (edit)="openDialogForm($event)"/>
 }

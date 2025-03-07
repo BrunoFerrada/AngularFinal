@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { TeacherService } from '../../../../../../core/services/teachers.service';
 import { Teacher } from '../../../teachers/models';
+import { MatDialog } from '@angular/material/dialog';
+import { CourseFormDialogComponent } from '../../components/course-form-dialog/course-form-dialog.component';
 
 @Component({
     selector: 'app-course-detail',
@@ -15,121 +17,98 @@ import { Teacher } from '../../../teachers/models';
     styleUrl: './course-detail.component.scss'
 })
 export class CourseDetailComponent implements OnInit {
-    isAdmin$: Observable<boolean>;
-    dataSource: Teacher[] = [];
-    isLoading = false;
-    course: Course | null = null;
-    errorMessage = '';
-    teachersList: Teacher[] = [];
-    selectedTeacherId: string = '';
-
-    constructor(
-        private courseService: CourseService,
-        private activatedRoute: ActivatedRoute,
-        private authService: AuthService,
-        private teacherService: TeacherService
-    ) {
-        this.isAdmin$ = this.authService.IsAdmin$;
-    }
-
-    handleCourseUpdate(data: Teacher[]): void {
-        if (data && data.length > 0) {
+    displayedColumns: string[] = ['id', 'name', 'actions'];
+        dataSource: Course[] = [];
+        isAdmin$: Observable<boolean>;
+        isLoading = false;
+    
+        constructor(private matdialog: MatDialog, private authService: AuthService, private courseService: CourseService, private route: ActivatedRoute) {
+            this.isAdmin$ = this.authService.IsAdmin$;
+        }
+    
+        handleCourseUpdate(data: Course[]): void {
             this.dataSource = [...data];
-        } else {
-            console.warn('No se encontraron profesores en el curso');
-            this.dataSource = [];
-        }
-    }
-
-    ngOnInit(): void {
-        this.isLoading = true;
-        this.loadTeachers();
-
-        this.courseService.getCourseDetail(this.activatedRoute.snapshot.params['id']).subscribe({
-        next: (course) => {
-            this.course = course;
-            if (course.teachers && course.teachers.length > 0) {
-            this.handleCourseUpdate(course.teachers);
-            }
-        },
-        error: (error) => {
-            this.isLoading = false;
-            if (error instanceof HttpResponse && error.status === 404) {
-            this.errorMessage = 'El curso no existe';
-            }
-        },
-        complete: () => {
-            this.isLoading = false;
-        },
-        });
-    }
-
-    addTeacher(teacherId: string): void {
-        if (!this.course?.id) {
-            alert('El ID del curso no está definido.');
-        return;
-        }
-
-        const isTeacherAlreadyAdded = this.course.teachers?.some(t => t.id === teacherId);
-        if (isTeacherAlreadyAdded) {
-            alert('El profesor ya está agregado a este curso.');
-            return;
-        }
-
-        this.courseService.addTeacherToCourse(this.course.id, teacherId)
-        .subscribe({
-            next: (updatedCourse) => {
-            const teacherToAdd = updatedCourse.teachers?.find(t => t.id === teacherId);
-                if (teacherToAdd) {
-                    this.course!.teachers?.push(teacherToAdd);
-                    this.handleCourseUpdate(this.course!.teachers!);
-                    alert('El profesor ya fue agregado.');
+        } 
+    
+        openDialogForm(editingCourse?: Course): void {
+            this.matdialog.open(CourseFormDialogComponent, {data: { editingCourse }})
+            .afterClosed().subscribe({
+                next: (data) => {
+                    if (!!data) {
+                        if (!!editingCourse){
+                            this.updateCourse(editingCourse.id, data)
+                        } else {
+                            this.addCourse(data);
+                        }
+                    }
                 }
-            },
-            error: (err) => {
-                console.error('Error al agregar el profesor', err);
-            }
-        });
-    }
-
-    removeTeacher(teacherId: string): void {
-        if (!this.course?.id) {
-            alert('El ID del curso no está definido.');
-            return;
+            });
         }
-
-        this.courseService.deleteTeacherFromCourse(this.course?.id, teacherId)
-        .subscribe({
-            next: () => {
-                alert('Profesor eliminado con éxito');
-                this.course!.teachers = this.course!.teachers?.filter(t => t.id !== teacherId);
-                this.handleCourseUpdate(this.course!.teachers!);
+    
+        addCourse(data: {name: string}): void {
+            this.courseService.addCourse(data).subscribe({
+            next: (data) => {
+                this.handleCourseUpdate(data);
             },
             error: (err) => {
-                alert('Error al eliminar el profesor');
-            }
-        });
-    }
-
-    loadTeachers(): void {
-        this.teacherService.getTeachers().subscribe({
-            next: (teachers) => {
-                this.teachersList = teachers;
+                this.isLoading = false;
             },
-            error: (err) => {
-                console.error('Error al cargar los profesores', err);
+            complete: () => {
+                this.isLoading = false;
             }
-        });
-    }
-
-    loadTeachersForCourse(teacherIds: string[]): void {
-        this.teacherService.getTeachers().subscribe({
-            next: (allTeachers) => {
-                this.dataSource = allTeachers.filter(teacher => teacherIds.includes(teacher.id));
-            },
-            error: (err) => {
-                console.error('Error al cargar los profesores', err);
+            })
+        }
+    
+        updateCourse(id: string, data: { name: string, lastName: string }) {
+            this.isLoading = true;
+            this.courseService.updateCourseById(id, data).subscribe ({
+              next: (data) => this.handleCourseUpdate(data),
+              error: (err) => (this.isLoading = false),
+              complete: () => (this.isLoading = false),
+            })
+        }
+    
+        ngOnInit(): void {
+            this.isLoading = true;
+        
+            // Obtener ID del estudiante desde la URL
+            this.route.paramMap.subscribe(params => {
+              const CourseId = params.get('id'); // Extraer el ID de la ruta
+    
+              if (CourseId) {
+                  this.loadCourse(CourseId);
+              }
+            });
+        }
+    
+        loadCourse(id: string): void {
+          this.courseService.getCourse(id).subscribe({
+              next: (Course) => {
+                  this.dataSource = [Course]; // Guardar solo el estudiante obtenido
+              },
+              error: () => {
+                  this.isLoading = false;
+              },
+              complete: () => {
+                  this.isLoading = false;
+              }
+          });
+      }
+        
+        onDelete(id:string): void {
+            if (confirm("Está seguro?")) {
+              this.isLoading = true;
+              this.courseService.deleteCourseById(id).subscribe({
+                next: (data) => {
+                  this.handleCourseUpdate(data);
+                },
+                error: (err) => {
+                  this.isLoading = false;
+                },
+                complete: () => {
+                  this.isLoading = false;
+                }
+              })
             }
-        });
-    }
+        }
 }

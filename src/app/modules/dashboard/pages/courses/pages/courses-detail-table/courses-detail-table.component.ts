@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../core/services/auth.service';
 import { Course } from '../../models';
-import { Teacher } from '../../../teachers/models';
 
 @Component({
   selector: 'app-courses-detail-table',
@@ -13,14 +12,14 @@ import { Teacher } from '../../../teachers/models';
 })
 export class CoursesDetailTableComponent {
     @Input()
-    dataSource: Teacher[] = []
-    displayedColumns = ['id', 'name', 'actions' ]
+    dataSource: Course[] = []
+    displayedColumns = ['id', 'name', 'teacher','actions' ]
 
     @Output()
     delete = new EventEmitter<string>()
 
     @Output()
-    add = new EventEmitter<Course>()
+    edit = new EventEmitter<Course>()
 
     isAdmin$: Observable<boolean>;
     
