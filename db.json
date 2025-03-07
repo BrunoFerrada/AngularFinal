@@ -20,7 +20,8 @@
   "courses": [
     {
       "id": "svDFs3",
-      "name": "Javascript"
+      "name": "Javascript",
+      "teachers": []
     },
     {
       "name": "Python",
@@ -39,14 +40,12 @@
     {
       "id": "sdjv4",
       "name": "Gojo",
-      "lastName": "Satoru",
-      "courseId": "10Ajs"
+      "lastName": "Satoru"
     },
     {
       "id": "fdkjg",
       "name": "Nanami",
-      "lastName": "Kento",
-      "courseId": "svDFs3"
+      "lastName": "Kento"
     }
   ],
   "students": [
@@ -54,7 +53,7 @@
       "id": "afhdh",
       "name": "Naruto",
       "lastName": "Uzumaki",
-      "courseId": ""
+      "courseId": "svDFs3"
     },
     {
       "id": "vmrxo",

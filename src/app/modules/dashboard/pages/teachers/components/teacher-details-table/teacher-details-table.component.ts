@@ -1,28 +1,29 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Teacher } from '../../models';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../../core/services/auth.service';
-import { Course } from '../../models';
-import { Teacher } from '../../../teachers/models';
 
 @Component({
-  selector: 'app-courses-detail-table',
+  selector: 'app-teacher-details-table',
   standalone: false,
   
-  templateUrl: './courses-detail-table.component.html',
-  styleUrl: './courses-detail-table.component.scss'
+  templateUrl: './teacher-details-table.component.html',
+  styleUrl: './teacher-details-table.component.scss'
 })
-export class CoursesDetailTableComponent {
+export class TeacherDetailsTableComponent {
     @Input()
     dataSource: Teacher[] = []
     displayedColumns = ['id', 'name', 'actions' ]
 
     @Output()
-    delete = new EventEmitter<string>()
+    delete = new EventEmitter<string>
 
     @Output()
-    add = new EventEmitter<Course>()
+    edit = new EventEmitter<Teacher>()
 
     isAdmin$: Observable<boolean>;
+    courseNames: { [courseId: string]: string } = {};
+
     
     constructor(private authService: AuthService) {
       this.isAdmin$ = this.authService.IsAdmin$;

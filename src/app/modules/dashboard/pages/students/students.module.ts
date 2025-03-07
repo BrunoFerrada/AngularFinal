@@ -13,6 +13,7 @@ import {MatTableModule} from '@angular/material/table';
 import { StudentDetailComponent } from './pages/student-detail/student-detail.component';
 import { StudentsFormDialogComponent } from './components/students-form-dialog/students-form-dialog.component';
 import { StudentsTableComponent } from './components/students-table/students-table.component';
+import { StudentDetailsTableComponent } from './components/student-details-table/student-details-table.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { StudentsTableComponent } from './components/students-table/students-tab
     StudentsComponent,
     StudentDetailComponent,
     StudentsFormDialogComponent,
-    StudentsTableComponent
+    StudentsTableComponent,
+    StudentDetailsTableComponent
   ],
   imports: [
     CommonModule,

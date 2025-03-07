@@ -1,3 +1,10 @@
-<h2>detalle del profesor {{teacherId}}</h2>
-
-<p>teachers-detail works!</p>
+<div class="text-center">
+    <h1>Detalles del Profesor</h1>
+</div>
+@if (isLoading) {
+    <div style="display: flex; justify-content: center; align-items: center; height: 60vh;" *ngIf="isLoading">
+        <mat-spinner/>
+    </div>
+} @else {
+    <app-teacher-details-table [dataSource]="dataSource" (delete)="onDelete($event)" (edit)="openDialogForm($event)"/>
+}

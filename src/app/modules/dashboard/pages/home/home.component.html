@@ -13,7 +13,7 @@
             Consulte la lista de cursos disponibles y sus detalles.
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button routerLink='courses'>
+            <button mat-raised-button routerLink='../courses'>
                 Ver Cursos
             </button>
           </mat-card-actions>
@@ -26,26 +26,40 @@
             Consulte la lista de estudiantes inscritos y sus progresos.
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button routerLink='students'>
+            <button mat-raised-button routerLink='../students'>
                 Ver Estudiantes
             </button>
           </mat-card-actions>
         </mat-card>
-      </div>
-
+      
+      <div class="card-wrapper">
       <!-- Tarjeta de Usuarios -->
-    <div class="centered-card">
+    
         <mat-card class="card">
         <mat-card-title class="pl-3">Ver Usuarios</mat-card-title>
         <mat-card-content>
             Consulte la lista de usuarios y administre su información.
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button routerLink='users'>
+            <button mat-raised-button routerLink='../users'>
                 Ver Usuarios
             </button>
         </mat-card-actions>
         </mat-card>
+    
+
+    
+      <mat-card class="card">
+      <mat-card-title class="pl-3">Ver Profesores</mat-card-title>
+      <mat-card-content>
+          Consulte la lista de profesores y administre su información.
+      </mat-card-content>
+      <mat-card-actions>
+          <button mat-raised-button routerLink='../teachers'>
+              Ver Profesores
+          </button>
+      </mat-card-actions>
+      </mat-card>
     </div>
 </div>
 

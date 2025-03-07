@@ -6,6 +6,6 @@
         <mat-spinner/>
     </div>
 } @else {
-    <button [disabled]="!(isAdmin$ | async)" (click)="openDialogForm()" mat-flat-button>Nuevo Curso</button>
+    <button class="m-3" [disabled]="!(isAdmin$ | async)" (click)="openDialogForm()" mat-flat-button>Nuevo Curso</button>
     <app-courses-table [dataSource]="dataSource" (delete)="onDelete($event)" (edit)="openDialogForm($event)"/>
 }

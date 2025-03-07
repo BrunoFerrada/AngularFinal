@@ -33,7 +33,6 @@ export class TeachersComponent {
       this.matdialog.open(TeachersFormDialogComponent, {data: { editingTeacher }})
       .afterClosed().subscribe({
           next: (data) => {
-              console.log(data)
               if (!!data) {
                   if (!!editingTeacher){
                       this.updateStudent(editingTeacher.id, data)
@@ -74,7 +73,6 @@ export class TeachersComponent {
       this.studentService.getTeachers().subscribe({
         next: (data) => {
           this.dataSource = [...data];
-          console.log(data)
         },
         error: () => {
           this.isLoading = false;

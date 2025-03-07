@@ -21,6 +21,10 @@ export class TeacherService {
     getTeachers() : Observable<Teacher[]> {
         return this.httpClient.get<Teacher[]>(`${environment.baseApiUrl}/teachers`);
     }
+
+    getTeacher(id: string) : Observable<Teacher> {
+             return this.httpClient.get<Teacher>(`${environment.baseApiUrl}/teachers/${id}`);
+    }
         
     deleteTeacherById(id:string): Observable<Teacher[]> {
         return this.httpClient.delete<Teacher>(`${environment.baseApiUrl}/teachers/${id}`).pipe(concatMap(() => this.getTeachers()));

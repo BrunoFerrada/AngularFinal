@@ -7,6 +7,7 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { TeachersTableComponent } from './components/teachers-table/teachers-table.component';
 import { TeachersFormDialogComponent } from './components/teachers-form-dialog/teachers-form-dialog.component';
 import { TeachersDetailComponent } from './pages/teachers-detail/teachers-detail.component';
+import { TeacherDetailsTableComponent } from './components/teacher-details-table/teacher-details-table.component';
 
 
 
@@ -15,7 +16,8 @@ import { TeachersDetailComponent } from './pages/teachers-detail/teachers-detail
     TeachersComponent,
     TeachersFormDialogComponent,
     TeachersTableComponent,
-    TeachersDetailComponent
+    TeachersDetailComponent,
+    TeacherDetailsTableComponent
   ],
   imports: [
     CommonModule,

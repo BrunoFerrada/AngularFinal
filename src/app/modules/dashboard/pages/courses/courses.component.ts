@@ -36,7 +36,6 @@ export class CoursesComponent implements OnInit{
     this.matdialog.open(CourseFormDialogComponent, {data: { editingCourse }})
     .afterClosed().subscribe({
       next: (data) => {
-        console.log(data)
         if (!!data) {
           if (!!editingCourse){
             this.updateCourse(editingCourse.id, data)
@@ -79,7 +78,6 @@ export class CoursesComponent implements OnInit{
     this.courseService.getCourses().subscribe({
       next: (data) => {
         this.dataSource = [...data];
-        console.log(data)
       },
       error: () => {
         this.isLoading = false;

@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
-import { concatMap, Observable } from "rxjs";
+import { concatMap, Observable, switchMap } from "rxjs";
 import { Course } from "../../modules/dashboard/pages/courses/models";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
+import { Teacher } from "../../modules/dashboard/pages/teachers/models";
 
 @Injectable({ providedIn: 'root' })
 export class CourseService {
@@ -24,8 +25,33 @@ export class CourseService {
     getCourses() : Observable<Course[]> {
         return this.httpClient.get<Course[]>(`${environment.baseApiUrl}/courses`);
     }
+
+    getCourse(courseId: string): Observable<Course> {
+        return this.httpClient.get<Course>(`${environment.baseApiUrl}/courses/${courseId}`);
+    }
     
     deleteCourseById(id:string): Observable<Course[]> {
         return this.httpClient.delete<Course>(`${environment.baseApiUrl}/courses/${id}`).pipe(concatMap(() => this.getCourses()));
+    }
+
+    addTeacherToCourse(courseId: string, teacherId: string): Observable<Course> {
+        return this.getCourse(courseId).pipe(
+            switchMap(course => {
+                const updatedTeachers = [...(course.teachers || []), teacherId];
+                return this.httpClient.patch<Course>(
+                    `${environment.baseApiUrl}/courses/${courseId}`,
+                    { teachers: updatedTeachers }
+                );
+            }),
+            switchMap(() => this.getCourse(courseId))
+        );
+    }
+
+    deleteTeacherFromCourse(courseId: string, teacherId: string): Observable<Course> {
+        return this.getCourseDetail(courseId).pipe(
+            concatMap(course => { const updatedTeachers = course.teachers?.filter(t => t.id !== teacherId);
+                return this.httpClient.patch<Course>(`${environment.baseApiUrl}/courses/${courseId}`, { teachers: updatedTeachers });
+            })
+        );
     }
 }
